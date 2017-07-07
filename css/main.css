@@ -118,9 +118,8 @@ body {
     text-align:left;
 }
 
-.x-button{
+#tasksholder button{
     box-sizing: border-box;
-    color:#ca3614;
     background:#323436;
     height:40px;
     width:40px;
@@ -129,4 +128,9 @@ body {
     float:right;
     font-family: "Myriad Pro", sans-serif;
     font-size: 30px;
+    margin-left:5px;
+}
+
+#tasksholder button:hover{
+    background:#2f3950;
 }
