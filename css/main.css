@@ -32,17 +32,30 @@ body {
     font-size: 20px;
     margin: 0 auto;
     display:grid;
-    grid-template-columns: 50px 60px 100px 100px 700px 10%;
+    grid-template-columns: 50px 110px 110px 110px 150px;
 }
 
 #filterholder button{
     border:none;
     background: #f58730;
-    width:60%;
+    width:110px;
     color: #333333;
     font-family: "Myriad Pro", sans-serif;
     font-size: 20px;
     text-align: center;
+}
+
+#filterholder button:hover{
+    background: #2f3950;
+    color: #ffffff;
+    border-radius: 5px;
+    font-family: "Myriad Pro", sans-serif;
+    font-size: 20px;
+}
+
+#filterholder button:active{
+    color: #ffffff;
+
 }
 
 #content-box {
@@ -88,12 +101,13 @@ body {
     padding-left:5px;
 }
 
-.kurczak{
+.task-box{
     box-sizing: border-box;
     height: 60px;
     width: 95%;
     padding-left:30px;
     padding-right:30px;
+    padding-top:15px;
     margin-top:10px;
     margin-left:auto;
     margin-right:auto;
@@ -101,4 +115,18 @@ body {
     font-size: 24px;
     color:#323436;
     background: #595d60;
+    text-align:left;
+}
+
+.x-button{
+    box-sizing: border-box;
+    color:#ca3614;
+    background:#323436;
+    height:40px;
+    width:40px;
+    border:none;
+    border-radius: 5px;
+    float:right;
+    font-family: "Myriad Pro", sans-serif;
+    font-size: 30px;
 }
