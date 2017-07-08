@@ -27,12 +27,12 @@ const vApp = {
 
             downButton.style.backgroundImage = "url('img/down.png')";
             downButton.addEventListener('click', function() {
-                vApp.swapElements(this.parentNode,this.parentNode.nextSibling);
+                    vApp.swapElements(this.parentNode, this.parentNode.nextSibling);
             });
 
-            upButton.style.backgroundImage = "url('img/down.png')";
+            upButton.style.backgroundImage = "url('img/up.png')";
             upButton.addEventListener('click', function() {
-                vApp.swapElements(this.parentNode,this.parentNode.previousSibling);
+                    vApp.swapElements(this.parentNode, this.parentNode.previousSibling);
             });
 
             taskCreator.appendChild(downButton);
@@ -45,7 +45,6 @@ const vApp = {
             vApp.warn();
         }
     },
-
 
     swapElements: (task1, task2) => {
         const task2Parent = task2.parentNode;      // save placement of second task
@@ -60,6 +59,17 @@ const vApp = {
             } else {                // in case task2 was the last one
                 task2Parent.appendChild(task1);
             }
+        }
+    },
+
+    scanThrough: () => {
+        const searchBar = document.getElementById('searchBar');
+        /*
+        TODO finish
+        on input run through every existing childnode of contentbox and check their innerHTML if contains searchbarValue, if not, set that child visibility to 0? else visibility=1;
+         */
+        if(searchBar.value.includes('')) {
+            console.log('YES!!!');
         }
     },
 
