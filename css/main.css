@@ -159,3 +159,9 @@ input[type=checkbox]{
     height:40px;
     cursor: pointer;
 }
+
+
+.absolute_tooltip {
+    position:absolute;
+}
+

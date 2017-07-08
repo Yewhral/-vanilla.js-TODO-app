@@ -11,6 +11,7 @@ const vApp = {
         const checkBox = document.createElement('input');
         const label = document.createElement('label');
 
+
         if (taskText.value.length > 0) {        // protection against empty input
             taskCreator.className = 'task-box';
             taskCreator.innerHTML = taskText.value;
@@ -24,6 +25,7 @@ const vApp = {
 
             editButton.style.backgroundImage = "url('img/edit.png')";
             editButton.addEventListener('click', function() {
+                // todo add if child nodes==do it else nothing
                 vApp.editTask(this.parentNode);
             });
 
@@ -36,7 +38,6 @@ const vApp = {
             upButton.addEventListener('click', function() {
                     vApp.swapElements(this.parentNode, this.parentNode.previousSibling);
             });
-
 
             checkBox.type = "checkbox";
 
@@ -53,13 +54,32 @@ const vApp = {
         }
     },
 
-
     editTask: (taskToEdit) => {
 
+        const bubble = document.createElement('span');
+        const inputField = document.createElement('input');
+        const inputButton = document.createElement('button');
+
+        inputField.setAttribute('type', 'text');
+        inputField.value = taskToEdit.innerText;
+        taskToEdit.removeChild(taskToEdit.firstChild);
+        bubble.className = 'absolute_tooltip';
+        inputButton.className = 'edition_button';
+        inputButton.innerText = 'Ok';
+        inputButton.style.fontSize = '18px';
+        inputButton.style.color = "#dddddd";
+        inputButton.addEventListener('click', function() {
+            this.parentNode.innerHTML='lol';
+            this.parentNode.parentNode.removeChild(this.parentNode);
+        });
+
+        bubble.appendChild(inputField);
+        bubble.appendChild(inputButton);
+        taskToEdit.appendChild(bubble);
     },
 
-
     swapElements: (task1, task2) => {
+        vApp.showAllTasks();    // show all tasks first, otherwise you may be swapping with hidden divs
         const task2Parent = task2.parentNode;      // save placement of second task
         let task2Sibling = task2.nextSibling;
 
