@@ -43,6 +43,7 @@ body {
     font-family: "Myriad Pro", sans-serif;
     font-size: 20px;
     text-align: center;
+    cursor: pointer;
 }
 
 #filterholder button:hover{
@@ -90,6 +91,7 @@ body {
     font-family: "Myriad Pro", sans-serif;
     font-size: 24px;
     color:#ffffff;
+    cursor:pointer;
 }
 
 #newTask{
@@ -118,6 +120,20 @@ body {
     text-align:left;
 }
 
+.task-box label{
+    display:inline-block;
+    box-sizing: border-box;
+    background:#323436;
+    height:40px;
+    width:40px;
+    border:none;
+    border-radius: 5px;
+    margin-left:5px;
+    float: left;
+    cursor:pointer;
+    margin-right: 8px;
+}
+
 #tasksholder button{
     box-sizing: border-box;
     background:#323436;
@@ -129,8 +145,17 @@ body {
     font-family: "Myriad Pro", sans-serif;
     font-size: 30px;
     margin-left:5px;
+    cursor:pointer;
 }
 
 #tasksholder button:hover{
     background:#2f3950;
+}
+
+input[type=checkbox]{
+    margin:0;
+    opacity:0.3;
+    width:40px;
+    height:40px;
+    cursor: pointer;
 }

@@ -14,9 +14,9 @@
             <h1>TODO APP</h1>
             <div id="filterholder">
                 Filter:
-                <button>Show all</button>
-                <button>Complete</button>
-                <button>Incomplete</button>
+                <button onclick="vApp.showAllTasks()">Show all</button>
+                <button onclick="vApp.filterTasks(false)">Complete</button>
+                <button onclick="vApp.filterTasks(true)"> Incomplete</button>
                 <input id='searchBar' type="text" placeholder="Search..." oninput="vApp.scanThrough()">
             </div>
 

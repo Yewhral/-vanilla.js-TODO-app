@@ -8,6 +8,8 @@ const vApp = {
         const editButton = document.createElement('button');
         const downButton = document.createElement('button');
         const upButton = document.createElement('button');
+        const checkBox = document.createElement('input');
+        const label = document.createElement('label');
 
         if (taskText.value.length > 0) {        // protection against empty input
             taskCreator.className = 'task-box';
@@ -22,7 +24,7 @@ const vApp = {
 
             editButton.style.backgroundImage = "url('img/edit.png')";
             editButton.addEventListener('click', function() {
-                //TODO add function to deal with text edition, maybe an input field and replace div with okay button
+                vApp.editTask(this.parentNode);
             });
 
             downButton.style.backgroundImage = "url('img/down.png')";
@@ -35,6 +37,11 @@ const vApp = {
                     vApp.swapElements(this.parentNode, this.parentNode.previousSibling);
             });
 
+
+            checkBox.type = "checkbox";
+
+            label.appendChild(checkBox);
+            taskCreator.appendChild(label);
             taskCreator.appendChild(downButton);
             taskCreator.appendChild(upButton);
             taskCreator.appendChild(editButton);
@@ -45,6 +52,12 @@ const vApp = {
             vApp.warn();
         }
     },
+
+
+    editTask: (taskToEdit) => {
+
+    },
+
 
     swapElements: (task1, task2) => {
         const task2Parent = task2.parentNode;      // save placement of second task
@@ -62,14 +75,24 @@ const vApp = {
         }
     },
 
+    showAllTasks: () => {
+        const container = document.getElementById('tasksholder');
+        const checkBoxes = container.getElementsByTagName("input");
+        for(let i = 0; checkBoxes.length > i; i++) {
+            checkBoxes[i].parentNode.parentNode.style.display='block';
+        }
+    },
+
     scanThrough: () => {
         const searchBar = document.getElementById('searchBar');
-        /*
-        TODO finish
-        on input run through every existing childnode of contentbox and check their innerHTML if contains searchbarValue, if not, set that child visibility to 0? else visibility=1;
-         */
-        if(searchBar.value.includes('')) {
-            console.log('YES!!!');
+        const container = document.getElementById('tasksholder');
+        vApp.showAllTasks();
+        for (let i = 0; container.childElementCount > i; i++) {
+            if (container.childNodes[i].innerText.includes(searchBar.value)) {
+            container.childNodes[i].style.display='block';
+            } else {
+                container.childNodes[i].style.display='none';
+            }
         }
     },
 
@@ -77,10 +100,18 @@ const vApp = {
         const taskText = document.getElementById('newTask');
         taskText.placeholder = 'You can\'t add an empty task!';
         return false;
-    }
+    },
 
-
-
+    filterTasks: (type) => {
+        const container = document.getElementById('tasksholder');
+        const checkBoxes = container.getElementsByTagName("input");
+        vApp.showAllTasks();
+        for (let i = 0; checkBoxes.length > i; i++) {
+            if (checkBoxes[i].type === "checkbox" && checkBoxes[i].checked === type) {
+                checkBoxes[i].parentNode.parentNode.style.display='none';
+            }
+        }
+    },
 
 
 };
