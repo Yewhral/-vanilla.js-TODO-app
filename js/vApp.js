@@ -27,18 +27,18 @@ const vApp = {
 
             editButton.style.backgroundImage = "url('img/edit.png')";
             editButton.addEventListener('click', function() {
-                // todo add if child nodes==do it else nothing
-                vApp.editTask(this.parentNode);
+                // todo add if child nodes==do it else nothing, append task to edited div
+                    vApp.editTask(this.parentNode);
             });
 
             downButton.style.backgroundImage = "url('img/down.png')";
             downButton.addEventListener('click', function() {
-                    vApp.swapElements(this.parentNode, this.parentNode.nextSibling);
+                vApp.swapElements(this.parentNode, this.parentNode.nextSibling);
             });
 
             upButton.style.backgroundImage = "url('img/up.png')";
             upButton.addEventListener('click', function() {
-                    vApp.swapElements(this.parentNode, this.parentNode.previousSibling);
+                vApp.swapElements(this.parentNode, this.parentNode.previousSibling);
             });
 
             checkBox.type = "checkbox";
@@ -58,19 +58,20 @@ const vApp = {
     },
 
     editTask: (taskToEdit) => {
-
         const bubble = document.createElement('span');
         const inputField = document.createElement('input');
         const inputButton = document.createElement('button');
         const textAppend = document.createElement('div');
 
+        inputField.value = taskToEdit.innerText;
+        inputField.setAttribute('type', 'text');
+        inputField.setAttribute('maxlength', '40');
 
         taskToEdit.removeChild(taskToEdit.firstChild);
 
-        inputField.setAttribute('type', 'text');
-        inputField.value = taskToEdit.innerText;
         textAppend.className = 'textBox';
         bubble.className = 'absolute_tooltip';
+
         inputButton.className = 'edition_button';
         inputButton.innerText = 'Ok';
         inputButton.style.fontSize = '18px';
@@ -114,10 +115,12 @@ const vApp = {
     scanThrough: () => {
         const searchBar = document.getElementById('searchBar');
         const container = document.getElementById('tasksholder');
+
         vApp.showAllTasks();
+
         for (let i = 0; container.childElementCount > i; i++) {
             if (container.childNodes[i].innerText.includes(searchBar.value)) {
-            container.childNodes[i].style.display='block';
+                container.childNodes[i].style.display='block';
             } else {
                 container.childNodes[i].style.display='none';
             }

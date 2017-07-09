@@ -168,4 +168,17 @@ input[type=checkbox]{
 .absolute_tooltip {
     position:absolute;
 }
+.absolute_tooltip input[type=text]{
+    background-color: #6e7376;
+    height: 30px;
+    border: solid 4px #333333;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #222222;
+    width:500px;
+}
+
+.absolute_tooltip input[type=text]:focus{
+    background-color: #919297;
+}
 
