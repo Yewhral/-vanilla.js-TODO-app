@@ -4,6 +4,7 @@ const vApp = {
         const taskText = document.getElementById('newTask');
         const contentBox = document.getElementById('tasksholder');
         const taskCreator = document.createElement('div');
+        const textBox = document.createElement('div');
         const deleteButton = document.createElement('button');
         const editButton = document.createElement('button');
         const downButton = document.createElement('button');
@@ -14,9 +15,10 @@ const vApp = {
 
         if (taskText.value.length > 0) {        // protection against empty input
             taskCreator.className = 'task-box';
-            taskCreator.innerHTML = taskText.value;
+            textBox.innerHTML = taskText.value;
+            textBox.className = 'textBox';
             contentBox.insertBefore(taskCreator, contentBox.childNodes[0]);
-            taskText.value = '';        // clean input box
+            taskText.value = '';        // clear input box
 
             deleteButton.style.backgroundImage = "url('img/delete.png')";
             deleteButton.addEventListener('click', function() {
@@ -42,6 +44,7 @@ const vApp = {
             checkBox.type = "checkbox";
 
             label.appendChild(checkBox);
+            taskCreator.appendChild(textBox);
             taskCreator.appendChild(label);
             taskCreator.appendChild(downButton);
             taskCreator.appendChild(upButton);
@@ -59,18 +62,23 @@ const vApp = {
         const bubble = document.createElement('span');
         const inputField = document.createElement('input');
         const inputButton = document.createElement('button');
+        const textAppend = document.createElement('div');
+
+
+        taskToEdit.removeChild(taskToEdit.firstChild);
 
         inputField.setAttribute('type', 'text');
         inputField.value = taskToEdit.innerText;
-        taskToEdit.removeChild(taskToEdit.firstChild);
+        textAppend.className = 'textBox';
         bubble.className = 'absolute_tooltip';
         inputButton.className = 'edition_button';
         inputButton.innerText = 'Ok';
         inputButton.style.fontSize = '18px';
         inputButton.style.color = "#dddddd";
         inputButton.addEventListener('click', function() {
-            this.parentNode.innerHTML='lol';
-            this.parentNode.parentNode.removeChild(this.parentNode);
+            textAppend.innerHTML = inputField.value;
+            taskToEdit.insertBefore(textAppend, taskToEdit.childNodes[0]);
+            bubble.parentNode.removeChild(bubble);
         });
 
         bubble.appendChild(inputField);

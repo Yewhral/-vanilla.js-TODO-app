@@ -160,6 +160,10 @@ input[type=checkbox]{
     cursor: pointer;
 }
 
+.textBox {
+    position: absolute;
+    margin-left: 60px;
+}
 
 .absolute_tooltip {
     position:absolute;
