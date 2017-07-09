@@ -18,7 +18,7 @@ const vApp = {
             textBox.innerHTML = taskText.value;
             textBox.className = 'textBox';
             contentBox.insertBefore(taskCreator, contentBox.childNodes[0]);
-            taskText.value = '';        // clear input box
+            taskText.value = '';                // clear input box
 
             deleteButton.style.backgroundImage = "url('img/delete.png')";
             deleteButton.addEventListener('click', function() {
@@ -27,8 +27,8 @@ const vApp = {
 
             editButton.style.backgroundImage = "url('img/edit.png')";
             editButton.addEventListener('click', function() {
-                // todo add if child nodes==do it else nothing, append task to edited div
-                    vApp.editTask(this.parentNode);
+                vApp.disableEditing(this.parentNode, true);
+                vApp.editTask(this.parentNode);
             });
 
             downButton.style.backgroundImage = "url('img/down.png')";
@@ -57,48 +57,58 @@ const vApp = {
         }
     },
 
+    disableEditing: (buttonParent, enabling) => {
+        buttonParent.childNodes[4].disabled = enabling;
+    },
+
     editTask: (taskToEdit) => {
         const bubble = document.createElement('span');
         const inputField = document.createElement('input');
         const inputButton = document.createElement('button');
-        const textAppend = document.createElement('div');
-
+        const textContainer = document.createElement('div');
         inputField.value = taskToEdit.innerText;
         inputField.setAttribute('type', 'text');
         inputField.setAttribute('maxlength', '40');
-
         taskToEdit.removeChild(taskToEdit.firstChild);
-
-        textAppend.className = 'textBox';
+        textContainer.className = 'textBox';
         bubble.className = 'absolute_tooltip';
-
         inputButton.className = 'edition_button';
         inputButton.innerText = 'Ok';
         inputButton.style.fontSize = '18px';
         inputButton.style.color = "#dddddd";
         inputButton.addEventListener('click', function() {
-            textAppend.innerHTML = inputField.value;
-            taskToEdit.insertBefore(textAppend, taskToEdit.childNodes[0]);
+            textContainer.innerHTML = inputField.value;
+            taskToEdit.insertBefore(textContainer, taskToEdit.childNodes[0]);
+            vApp.disableEditing(taskToEdit,false);
             bubble.parentNode.removeChild(bubble);
         });
-
         bubble.appendChild(inputField);
         bubble.appendChild(inputButton);
         taskToEdit.appendChild(bubble);
     },
 
-    swapElements: (task1, task2) => {
-        vApp.showAllTasks();    // show all tasks first, otherwise you may be swapping with hidden divs
-        const task2Parent = task2.parentNode;      // save placement of second task
-        let task2Sibling = task2.nextSibling;
+    filterTasks: (type) => {
+        const container = document.getElementById('tasksholder');
+        const checkBoxes = container.getElementsByTagName("input");
+        vApp.showAllTasks();
+        for (let i = 0; checkBoxes.length > i; i++) {
+            if (checkBoxes[i].type === "checkbox" && checkBoxes[i].checked === type) {
+                checkBoxes[i].parentNode.parentNode.style.display='none';
+            }
+        }
+    },
 
+    swapElements: (task1, task2) => {
+        vApp.showAllTasks();                    // show all tasks first, otherwise you may be swapping with hidden divs
+        const task2Parent = task2.parentNode;   // save placement of second task
+        let task2Sibling = task2.nextSibling;
         if (task2Sibling === task1) {
             task2Parent.insertBefore(task1, task2);
         } else {
             task1.parentNode.insertBefore(task2, task1);
-            if (task2Sibling) {     // insert where task2 was
+            if (task2Sibling) {                 // insert where task2 was
                 task2Parent.insertBefore(task1, task2Sibling);
-            } else {                // in case task2 was the last one
+            } else {                            // in case task2 was the last one
                 task2Parent.appendChild(task1);
             }
         }
@@ -115,9 +125,7 @@ const vApp = {
     scanThrough: () => {
         const searchBar = document.getElementById('searchBar');
         const container = document.getElementById('tasksholder');
-
         vApp.showAllTasks();
-
         for (let i = 0; container.childElementCount > i; i++) {
             if (container.childNodes[i].innerText.includes(searchBar.value)) {
                 container.childNodes[i].style.display='block';
@@ -133,16 +141,7 @@ const vApp = {
         return false;
     },
 
-    filterTasks: (type) => {
-        const container = document.getElementById('tasksholder');
-        const checkBoxes = container.getElementsByTagName("input");
-        vApp.showAllTasks();
-        for (let i = 0; checkBoxes.length > i; i++) {
-            if (checkBoxes[i].type === "checkbox" && checkBoxes[i].checked === type) {
-                checkBoxes[i].parentNode.parentNode.style.display='none';
-            }
-        }
-    },
+
 
 
 };
