@@ -71,7 +71,6 @@ body {
 #addNew {
     box-sizing: border-box;
     background: #f58730;
-    height:80px;
     width:95%;
     display:inline-block;
     margin-top:10px;
@@ -189,3 +188,41 @@ input[type=checkbox] {
     display:inline-block;
     float:left;
 }
+
+@media (max-width: 1680px) {
+    #addNew {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .textBox {
+        margin-top: 8px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1400px) {
+    #content-box {
+        width: 86%;
+    }
+}
+
+@media (max-width: 1040px) {
+    #content-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 894px) {
+    .bubble input[type=text] {
+        width: 300px;
+    }
+    .textBox {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    #newTask {
+        width: 45%
+    }
+
+}
+
