@@ -12,7 +12,6 @@ const vApp = {
         const checkBox = document.createElement('input');
         const label = document.createElement('label');
 
-
         if (taskText.value.length > 0) {        // protection against empty input
             taskCreator.className = 'task-box';
             textBox.innerHTML = taskText.value;
@@ -33,15 +32,26 @@ const vApp = {
 
             downButton.style.backgroundImage = "url('img/down.png')";
             downButton.addEventListener('click', function() {
-                vApp.swapElements(this.parentNode, this.parentNode.nextSibling);
+                if (this.parentNode ==  contentBox.lastChild) {
+                    return false;
+                } else {
+                    vApp.swapElements(this.parentNode, this.parentNode.nextSibling);
+                }
             });
 
             upButton.style.backgroundImage = "url('img/up.png')";
             upButton.addEventListener('click', function() {
-                vApp.swapElements(this.parentNode, this.parentNode.previousSibling);
+                if (this.parentNode ==  contentBox.firstChild) {
+                    return false;
+                } else {
+                    vApp.swapElements(this.parentNode, this.parentNode.previousSibling);
+                }
             });
 
             checkBox.type = "checkbox";
+            checkBox.addEventListener('click', function() {
+               vApp.manageCheckbox(this.parentNode);
+            });
 
             label.appendChild(checkBox);
             taskCreator.appendChild(textBox);
@@ -71,8 +81,7 @@ const vApp = {
         inputField.setAttribute('maxlength', '40');
         taskToEdit.removeChild(taskToEdit.firstChild);
         textContainer.className = 'textBox';
-        bubble.className = 'absolute_tooltip';
-        inputButton.className = 'edition_button';
+        bubble.className = 'bubble';
         inputButton.innerText = 'Ok';
         inputButton.style.fontSize = '18px';
         inputButton.style.color = "#dddddd";
@@ -95,6 +104,14 @@ const vApp = {
             if (checkBoxes[i].type === "checkbox" && checkBoxes[i].checked === type) {
                 checkBoxes[i].parentNode.parentNode.style.display='none';
             }
+        }
+    },
+
+    manageCheckbox: (label) => {
+        if(label.childNodes[0].checked === true) {
+            label.style.backgroundImage = 'url(img/tick.png)';
+        } else {
+            label.style.backgroundImage = 'none';
         }
     },
 
@@ -140,8 +157,5 @@ const vApp = {
         taskText.placeholder = 'You can\'t add an empty task!';
         return false;
     },
-
-
-
 
 };
