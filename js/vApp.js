@@ -32,7 +32,7 @@ const vApp = {
 
             downButton.style.backgroundImage = "url('img/down.png')";
             downButton.addEventListener('click', function() {
-                if (this.parentNode ==  contentBox.lastChild) {
+                if (this.parentNode ===  contentBox.lastChild) {
                     return false;
                 } else {
                     vApp.swapElements(this.parentNode, this.parentNode.nextSibling);
@@ -41,7 +41,7 @@ const vApp = {
 
             upButton.style.backgroundImage = "url('img/up.png')";
             upButton.addEventListener('click', function() {
-                if (this.parentNode ==  contentBox.firstChild) {
+                if (this.parentNode ===  contentBox.firstChild) {
                     return false;
                 } else {
                     vApp.swapElements(this.parentNode, this.parentNode.previousSibling);

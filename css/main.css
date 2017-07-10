@@ -76,10 +76,11 @@ body {
     display:inline-block;
     margin-top:10px;
     padding:25px;
-    text-align: left;
     font-family: "Myriad Pro", sans-serif;
     font-size: 24px;
     color:#323436;
+    padding-left:70px;
+    padding-right:70px;
 }
 
 #addNew button{
@@ -92,10 +93,11 @@ body {
     font-size: 24px;
     color:#ffffff;
     cursor:pointer;
+    float:right;
 }
 
 #newTask{
-    width:800px;
+    width:60%;
     margin-left:5px;
     font-family: "Myriad Pro", sans-serif;
     font-size: 24px;
@@ -109,7 +111,7 @@ body {
     width: 95%;
     padding-left:30px;
     padding-right:30px;
-    padding-top:15px;
+    padding-top:12px;
     margin-top:10px;
     margin-left:auto;
     margin-right:auto;
@@ -163,6 +165,7 @@ input[type=checkbox] {
 .textBox {
     position: absolute;
     margin-left: 60px;
+    margin-top: 2px;
 }
 
 .bubble {
@@ -180,4 +183,9 @@ input[type=checkbox] {
 
 .bubble input[type=text]:focus {
     background-color: #919297;
+}
+
+#addText{
+    display:inline-block;
+    float:left;
 }
