@@ -173,7 +173,7 @@ input[type=checkbox] {
 .bubble input[type=text] {
     background-color: #6e7376;
     height: 30px;
-    border: solid 4px #333333;
+    border: solid 3px #333333;
     border-radius: 5px;
     font-size: 20px;
     color: #222222;
@@ -218,13 +218,24 @@ input[type=checkbox] {
     }
     .textBox {
         margin-top: 10px;
-        font-size: 14px;
+        font-size: 16px;
+        margin-left:50px;
     }
     #newTask {
         width: 45%
     }
     #filterholder {
         width: 86%;
+    }
+    .task-box {
+        height:100px;
+        padding-left: 5px;
+        padding-right:5px;
+        padding-top:10px;
+    }
+    #tasksholder button {
+        float:left;
+        margin-top:45px;
     }
 }
 
@@ -241,6 +252,9 @@ input[type=checkbox] {
     #newTask {
         min-width: 290px;
     }
+    .bubble input[type=text] {
+        width: 200px;
+    }
 }
 
 @media (max-width: 600px){
@@ -254,6 +268,16 @@ input[type=checkbox] {
     }
     #filterholder button:hover {
         font-size: 14px;
+    }
+}
+
+
+@media (max-width: 580px){
+    #filterholder{
+        width:97%;
+    }
+    .bubble input[type=text] {
+        width: 100px;
     }
 }
 
