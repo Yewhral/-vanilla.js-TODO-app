@@ -223,6 +223,37 @@ input[type=checkbox] {
     #newTask {
         width: 45%
     }
+    #filterholder {
+        width: 86%;
+    }
+}
 
+@media (max-width: 760px) {
+    #addText {
+        float:none;
+        width:100%;
+        margin-bottom: 5px;
+    }
+    #addNew button {
+        float: none;
+        margin-top: 5px;
+    }
+    #newTask {
+        min-width: 290px;
+    }
+}
+
+@media (max-width: 600px){
+    #filterholder {
+        grid-template-columns: 40px 90px 90px 90px 100px;
+        font-size:16px;
+    }
+    #filterholder button {
+        width:90px;
+        font-size:14px;
+    }
+    #filterholder button:hover {
+        font-size: 14px;
+    }
 }
 
