@@ -1,16 +1,16 @@
 const vApp = {
 
     addTask: () => {
-        const taskText = document.getElementById('newTask');
-        const contentBox = document.getElementById('tasksholder');
-        const taskCreator = document.createElement('div');
-        const textBox = document.createElement('div');
-        const deleteButton = document.createElement('button');
-        const editButton = document.createElement('button');
-        const downButton = document.createElement('button');
-        const upButton = document.createElement('button');
-        const checkBox = document.createElement('input');
-        const label = document.createElement('label');
+        const taskText = document.getElementById('newTask'),
+            contentBox = document.getElementById('tasksholder'),
+            taskCreator = document.createElement('div'),
+            textBox = document.createElement('div'),
+            deleteButton = document.createElement('button'),
+            editButton = document.createElement('button'),
+            downButton = document.createElement('button'),
+            upButton = document.createElement('button'),
+            checkBox = document.createElement('input'),
+            label = document.createElement('label');
 
         if (taskText.value.length > 0) {        // protection against empty input
             taskCreator.className = 'task-box';
@@ -72,10 +72,11 @@ const vApp = {
     },
 
     editTask: (taskToEdit) => {
-        const bubble = document.createElement('span');
-        const inputField = document.createElement('input');
-        const inputButton = document.createElement('button');
-        const textContainer = document.createElement('div');
+        const bubble = document.createElement('span'),
+            inputField = document.createElement('input'),
+            inputButton = document.createElement('button'),
+            textContainer = document.createElement('div');
+
         inputField.value = taskToEdit.innerText;
         inputField.setAttribute('type', 'text');
         inputField.setAttribute('maxlength', '40');
@@ -97,8 +98,8 @@ const vApp = {
     },
 
     filterTasks: (type) => {
-        const container = document.getElementById('tasksholder');
-        const checkBoxes = container.getElementsByTagName("input");
+        const container = document.getElementById('tasksholder'),
+             checkBoxes = container.getElementsByTagName("input");
         vApp.showAllTasks();
         for (let i = 0; checkBoxes.length > i; i++) {
             if (checkBoxes[i].type === "checkbox" && checkBoxes[i].checked === type) {
@@ -132,16 +133,16 @@ const vApp = {
     },
 
     showAllTasks: () => {
-        const container = document.getElementById('tasksholder');
-        const checkBoxes = container.getElementsByTagName("input");
+        const container = document.getElementById('tasksholder'),
+            checkBoxes = container.getElementsByTagName("input");
         for(let i = 0; checkBoxes.length > i; i++) {
             checkBoxes[i].parentNode.parentNode.style.display='block';
         }
     },
 
     scanThrough: () => {
-        const searchBar = document.getElementById('searchBar');
-        const container = document.getElementById('tasksholder');
+        const searchBar = document.getElementById('searchBar'),
+            container = document.getElementById('tasksholder');
         vApp.showAllTasks();
         for (let i = 0; container.childElementCount > i; i++) {
             if (container.childNodes[i].innerText.includes(searchBar.value)) {
