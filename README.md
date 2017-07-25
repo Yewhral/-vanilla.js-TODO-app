@@ -2,7 +2,7 @@
 
 Edit: 12-07 Ouch! I found plenty of things that I should definitely improve here. I will change it ASAP
 
-Here's a life preview: https://yewhral.github.io/-vanilla.js-TODO-app/
+Here's a life preview: https://yewhral.github.io/vanilla.js-TODO-app/
 
 Here's a screenshot: http://i.imgur.com/YRYPiBe.jpg
 
